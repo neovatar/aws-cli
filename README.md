@@ -1,4 +1,4 @@
-# AWS CLI in Docker
+# AWS CLI Docker Image
 
 Containerized AWS CLI on alpine to avoid requiring the aws cli to be installed on CI machines.
 
