@@ -6,7 +6,7 @@ function setup_git()
   # Allows git commit
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis CI"
-  git remote set-url "https://${GH_TOKEN}@github.com/neovatar/aws-cli.git"
+  git remote set-url origin "https://${GH_TOKEN}@github.com/neovatar/aws-cli.git"
 }
 
 function update()
