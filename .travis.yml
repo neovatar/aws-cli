@@ -1,0 +1,10 @@
+language: python
+services:
+- docker
+script:
+- docker build -t neovatar/aws-cli .
+after_script:
+- ./update.sh
+env:
+  global:
+    secure: mZH1gByj/ObRKBlStM42oml6uuMgKTNHRRecTi/fKYEvU/DaS0RacJMh+8YKN3BAdXLOr2RuuZ8N/iFBnBWSUWGTsEUTFTl5LuvScwuViJVg/5G5KyVpaoeXSOd0+yC8v5ntbmIy5vmpCUU+RtlI4NHciFE7RkX+XCvherzRi/HXi03qUfDACldvLlNZtyDeQQnQP90Q1AMuCn5K6oUNOVXuB0chsMJl+loUzfdtRscJDaEBKCwIlWdzKZNJgnlTtmBd2Iq67++FVRdZctHyRehyI3r1gH53VFtwMHvb5nzbYY918l/TbdgS3aAVJSuGP1RjrPT3P30S/Mzr66YkRy+rWJPIjYUvX4XcJoy5jbNGgVI3PUCgZkr90X2b/HJOTX9a8D8Hw3JL9YSNmOTIPQoyUb1rUpRT5ujEMfeFrSPt4xYJ+P7uX9X5cPruoM0RrO2P4AelebQ2HZrDbRY2JXEC16ViKaATpbhWtkWCeQ/QhlYnVg8b8ikWm/0jbc7kONX0XgBbvzJZ8iRXPS9Hwjfc1XZ3AgIqC9X8Ffd69cvcH/MilCEVsEHlA/gU7SJGKFzl7qRO+GGAn9WWfiFOYKaNBsUBC/tqgFvfB4mI/i/TY9M53jlZtztkQJm5Puovt55LSh+mfN2ZAnlkmAv1OVKoTtSLBlSfrl5zH/k6idk=

@@ -1,4 +1,4 @@
-FROM ubuntu:bionic-20180724.1
+FROM ubuntu:bionic
 
 ENV AWSCLI_VERSION "1.15.81"
 
