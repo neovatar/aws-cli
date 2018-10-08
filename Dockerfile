@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-ENV AWSCLI_VERSION "1.16.28"
+ENV AWSCLI_VERSION "1.16.29"
 
 RUN apt-get update \
  && apt-get upgrade -y \
