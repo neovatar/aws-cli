@@ -4,7 +4,7 @@ ENV AWSCLI_VERSION "1.16.64"
 
 RUN apt-get update \
  && apt-get upgrade -y \
- && apt-get install --no-install-recommends -qy python python-pip \
+ && apt-get install --no-install-recommends -qy python python-pip groff \
  && pip install setuptools --upgrade \
  && pip install wheel \
  && pip install awscli==${AWSCLI_VERSION} \
