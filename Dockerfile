@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-ENV AWSCLI_VERSION "1.18.87"
+ENV AWSCLI_VERSION "1.18.88"
 ENV LC_ALL "C.UTF-8"
 
 RUN apt-get update \
