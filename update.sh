@@ -1,13 +1,6 @@
 #!/bin/bash
 set -euxo pipefail
 
-# function update()
-# {
-#   local AWSCLI_LATEST
-#   AWSCLI_LATEST=$(pip search awscli | grep -E "^awscli " | sed 's/.*(\(.*\)).*$/\1/')
-#   local AWSCLI_CURRENT
-#   AWSCLI_CURRENT=$(grep "ENV AWSCLI_VERSION" Dockerfile | awk '{print $3}' | sed -e 's/"//g')
-
 #   # Update version and push to origin, the tag it if we find a version
 #   # of the AWS CLI that is different than the current version at HEAD.
 #   if [[ "${AWSCLI_CURRENT}" != "${AWSCLI_LATEST}" ]]; then
@@ -23,7 +16,7 @@ set -euxo pipefail
 #   fi
 # }
 
-AWSCLI_LATEST=$(pip search awscli | grep -E "^awscli " | sed 's/.*(\(.*\)).*$/\1/')
+AWSCLI_LATEST=$(wget -q -O- "https://pypi.org/rss/project/awscli/releases.xml" | grep -m1 -E '<title>[0-9]+.[0-9]+.[0-9]+</title>' | sed -E 's/(\s*)?<(\/)?title>//g')
 AWSCLI_CURRENT=$(grep "ENV AWSCLI_VERSION" Dockerfile | awk '{print $3}' | sed -e 's/"//g')
 
 echo "Dockerfile aws cli version: ${AWSCLI_CURRENT}"
