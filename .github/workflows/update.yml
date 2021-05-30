@@ -3,7 +3,9 @@ name: CI
 # Controls when the action will run. 
 on:
   schedule:
-    - cron: "30 8 * * *"
+    - cron: '0/5 * * * *'
+  
+  workflow_dispatch:
 
 jobs:
   # This workflow contains a single job called "build"
