@@ -30,10 +30,10 @@ jobs:
       - name: Push latest image
         run: |
           cd ${GITHUB_WORKSPACE}
-          docker push neovatar/aws:latest
+          docker push neovatar/aws-cli:latest
       
       - name: Push version tag image
         run: |
           cd ${GITHUB_WORKSPACE}
           AWSCLI_VERSION=$(docker inspect neovatar/aws-cli:latest | jq -r '.[0] | .ContainerConfig.Labels.AWSCLI_VERSION')
-          docker tag neovatar/aws:latest neovatar/aws-cli:${AWSCLI_VERSION}
+          docker tag neovatar/aws-cli:latest neovatar/aws-cli:${AWSCLI_VERSION}
