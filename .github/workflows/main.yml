@@ -1,0 +1,35 @@
+name: main
+
+# Controls when the action will run. 
+on:
+  push:
+    branches: [ main ]
+  
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out repo to $GITHUB_WORKSPACE
+      - name: Check out repo
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build docker image
+        run: |
+          cd ${GITHUB_WORKSPACE}
+          docker build -t neovatar/aws-cli:latest
+      
+      - name: Push latest image
+        run: |
+          cd ${GITHUB_WORKSPACE}
+          docker push neovatar/aws:latest
+
+          # AWSCLI_VERSION=$(docker inspect neovatar/aws-cli:latest | jq -r '.[0] | .ContainerConfig.Labels.AWSCLI_VERSION')
