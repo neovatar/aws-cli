@@ -14,6 +14,6 @@ if [[ "${AWSCLI_CURRENT}" != "${AWSCLI_LATEST}" ]]; then
   # create and push the tag
   git tag --annotate "${AWSCLI_LATEST}" -m"AWS CLI ${AWSCLI_LATEST}" --force
   git push origin "${AWSCLI_LATEST}" --force
-  .github/workflows/scripts/build.sh
-  .github/workflows/scripts/push.sh
+  scripts/build.sh
+  scripts/push.sh
 fi
