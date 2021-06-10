@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out repo to $GITHUB_WORKSPACE
       - name: Check out repo
         uses: actions/checkout@v2
 
@@ -23,18 +22,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build docker image
-        run: |
-          cd ${GITHUB_WORKSPACE}
-          docker build -t neovatar/aws-cli:latest .
+        run: ${GITHUB_WORKSPACE}/scripts/build.sh
       
-      - name: Push latest image
-        run: |
-          cd ${GITHUB_WORKSPACE}
-          docker push neovatar/aws-cli:latest
-      
-      - name: Push version tag image
-        run: |
-          cd ${GITHUB_WORKSPACE}
-          AWSCLI_VERSION=$(docker inspect neovatar/aws-cli:latest | jq -r '.[0] | .ContainerConfig.Labels.AWSCLI_VERSION')
-          docker tag neovatar/aws-cli:latest neovatar/aws-cli:${AWSCLI_VERSION}
-          docker push neovatar/aws-cli:${AWSCLI_VERSION}
+      - name: Push latest and tagged image
+        run: ${GITHUB_WORKSPACE}/scripts/push.sh
