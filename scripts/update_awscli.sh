@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-cd "${GITHUB_WORKSPACE}"
+cd "${GITHUB_WORKSPACE:-$(pwd)}"
 git config --global user.email "github-actions"
 git config --global user.name "github-actions"
 AWSCLI_LATEST=$(wget -q -O- "https://pypi.org/rss/project/awscli/releases.xml" | grep -m1 -E '<title>[0-9]+.[0-9]+.[0-9]+</title>' | sed -E 's/(\s*)?<(\/)?title>//g')
