@@ -4,6 +4,7 @@ set -euxo pipefail
 cd "${GITHUB_WORKSPACE:-$(pwd)}"
 git config --global user.email "github-actions"
 git config --global user.name "github-actions"
+apt-get update && apt-get install libxml2-utils
 curl -o .releases.xml "https://pypi.org/rss/project/awscli/releases.xml"
 AWSCLI_LATEST=$(xmllint  --xpath '//channel/item[1]/title/text()' .releases.xml)
 AWSCLI_CURRENT=$(grep "ARG AWSCLI_VERSION=" Dockerfile | sed -E 's/^.*=//')
